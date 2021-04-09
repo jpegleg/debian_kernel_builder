@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Publish and cleanup') {
             steps {
-                sh "cp *.deb /srv/"
+                sh "cp /srv/kbuild/*.deb /srv/"
             }
             post {
                 success {
