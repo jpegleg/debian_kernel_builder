@@ -7,8 +7,6 @@ pipeline {
     stages {
         stage('Prep') {
             steps {
-                sh "cd /srv; rm -rf kbuild"
-                sh "mkdir kbuild && cd kbuild"
                 sh "aptitude install libelf-dev libssl-dev linux-source fakeroot debhelper -y"
             }
             post {
@@ -29,7 +27,7 @@ pipeline {
             }
             post {
                 success {
-                    sh "ls *.deb"
+                    sh "ls /srv/kbuild/linux*.deb"
                 }
             }
         }
