@@ -23,7 +23,7 @@ pipeline {
                 sh "cd /srv/kbuild && rm -rf ./* && cp /usr/src/linux-source-4.19.tar.xz ."
                 sh "cd /srv/kbuild && tar xvf ./linux-source-4.19.tar.xz && cd linux-source-4.19 && cp /boot/config-4.19.0-16-amd64 .config"
                 sh "echo apply-deltas-here"
-                sh "make deb-pkg LOCALVERSION=-customk KDEB_PKGVERSION=\$(make kernelversion)-1"
+                sh "cd /srv/kbuild/linux-source-4.19 && make deb-pkg LOCALVERSION=-customk KDEB_PKGVERSION=\$(make kernelversion)-1"
             }
             post {
                 success {
